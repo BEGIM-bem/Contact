@@ -1,0 +1,61 @@
+.poliInput {
+  max-width: 661px;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.BtnFormik {
+  margin-top: 20px;
+  width: 289px;
+  height: 40px;
+  background: #212121;
+  border-radius: 2px;
+  border: 0;
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+
+  color: #ffffff;
+}
+.error {
+  color: red;
+}
+
+.Avatorka {
+  margin-top: 41px;
+  margin-left: 50px;
+  margin-bottom: 41px;
+}
+.wrapper {
+  margin-bottom: 49px;
+  margin-left: 41px;
+}
+
+.input {
+  width: 289px;
+  height: 40px;
+  background: #ffffff;
+  border: 1px solid rgba(33, 33, 33, 0.35);
+  border-radius: 2px;
+
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 18px;
+  color: rgba(33, 33, 33, 0.75);
+  padding-left: 8px;
+}
+
+.title {
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 18px;
+
+  color: rgba(33, 33, 33, 0.75);
+}

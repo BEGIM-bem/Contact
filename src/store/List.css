@@ -1,0 +1,223 @@
+.HeaderList {
+  position: relative;
+}
+
+.InputList {
+  width: 551px;
+  height: 40px;
+  background: #ffffff;
+  border: 1px solid rgba(33, 33, 33, 0.35);
+  border-radius: 2px;
+  margin-top: 47px;
+  margin-left: 143px;
+  padding-left: 16px;
+  margin-bottom: 42px;
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.SortAZ {
+  padding-left: 16px;
+}
+.SortZA {
+  padding-left: 16px;
+}
+.Sort1 {
+  border: 0;
+  background: 0;
+}
+.AllIcon {
+  margin-top: -85px;
+  margin-left: 1143px;
+}
+
+@media screen and (max-width: 1075px) {
+  .InputList {
+    width: 450px;
+  }
+  .AllIcon {
+    margin-left: 800px;
+  }
+}
+
+@media screen and (max-width: 969px) {
+  .InputList {
+    width: 400px;
+  }
+  .AllIcon {
+    margin-left: 700px;
+  }
+}
+
+@media screen and (max-width: 880px) {
+  .InputList {
+    width: 350px;
+  }
+  .AllIcon {
+    margin-left: 600px;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .InputList {
+    width: 300px;
+  }
+  .AllIcon {
+    margin-left: 500px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .InputList {
+    width: 300px;
+    margin-left: 50px;
+  }
+  .AllIcon {
+    margin-left: 200px;
+    margin-top: -30px;
+  }
+}
+
+@media screen and (max-width: 397px) {
+  .InputList {
+    width: 250px;
+    margin-left: 50px;
+  }
+  .AllIcon {
+    margin-left: 150px;
+    margin-top: -30px;
+  }
+}
+
+@media screen and (max-width: 327px) {
+  .InputList {
+    width: 250px;
+    margin-left: 20px;
+  }
+  .AllIcon {
+    margin-left: 115px;
+    margin-top: -30px;
+  }
+}
+
+.Container {
+  width: 250px;
+  height: 303px;
+  background: #ffffff;
+  box-shadow: 1px 1px 3px rgba(33, 33, 33, 0.25);
+  border-radius: 4px;
+  margin-left: 52px;
+  margin-top: 42px;
+  /* background: chocolate;   */
+}
+.Content {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 89px;
+}
+
+.imgUsers {
+  width: 250px;
+  height: 134px;
+  border-radius: 4px 4px 0px 0px;
+}
+
+.title {
+  position: relative;
+  width: 233px;
+  height: 21px;
+  left: 5px;
+  top: 0px;
+}
+
+.IconHart {
+  position: relative;
+  left: 220px;
+  top: -18px;
+}
+
+@media screen and (max-width: 446px) {
+  .Container {
+    margin-left: -10px;
+  }
+}
+
+@media screen and (max-width: 346px) {
+  .Container {
+    margin-left: -36px;
+  }
+}
+
+@media screen and (max-width: 328px) {
+  .Container {
+    margin-left: -50px;
+  }
+}
+
+@media screen and (max-width: 307px) {
+  .Container {
+    margin-left: -70px;
+  }
+}
+
+.NameUsers {
+  padding-left: 8px;
+
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.contact {
+  margin-left: 8px;
+  margin-top: 11px;
+}
+
+.NameCity {
+  margin-top: -18px;
+  margin-left: 20px;
+
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 15px;
+  color: #000000;
+}
+
+.PhoneNumber {
+  margin-top: -18px;
+  margin-left: 20px;
+
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 15px;
+  color: #000000;
+}
+.ConteinerNumber {
+  margin-top: 6px;
+}
+
+.BtnShow {
+  width: 95px;
+  height: 21px;
+  background: #212121;
+  border-radius: 2px;
+  font-family: Ubuntu;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
+  border: 0;
+  margin-left: 146px;
+  margin-top: 17px;
+
+  color: #ffffff;
+}
