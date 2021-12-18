@@ -4,26 +4,64 @@ import * as yup from 'yup'
 import './Item.css'
 import Avatorka from './img/avatar.png'
 import { useSelector } from 'react-redux'
-import {Link } from "react-router-dom"
-import { hashHistory } from 'react-router';
+import {Link , useNavigate } from "react-router-dom"
+
+import{Stata} from '../store/actions'
+
+ 
 
 
 
-function Item({save}) {
+
+function Item( ) {
     const OneUsersClickShow  = useSelector(state => state)
     console.log("OneUsersClickShow ", OneUsersClickShow);
-    
+   
 
+  
     const validationsSchema = yup.object().shape({
         firstName: yup.string().typeError('Должно быть строкой').required('Обязательно') , 
         lastName: yup.string().typeError('Должно быть строкой').required('Обязательно') , 
         city: yup.string().typeError('Должно быть строкой').required('Обязательно')  ,
         country: yup.string().typeError('Должно быть строкой').required('Обязательно') ,
-        phoneName: yup.number().typeError('Должно быть числом').required('Обязательно'),
+        phoneNumber: yup.number().typeError('Должно быть числом').required('Обязательно'),
         email: yup.string().email('Введите кооректный email').required('Обязательно'),
     })
 
+  
+   
+    function sumbit(values) {
+        
+              
+            let storageProfileString = localStorage.getItem('Users')
+            let savedUsers = JSON.parse(storageProfileString);
+            
+  
 
+            for(let i=0; i < savedUsers.length; i++) {
+               if(savedUsers[i].id == OneUsersClickShow.id){
+                savedUsers[i].firstName = values.firstName
+                savedUsers[i].lastName = values.lastName
+                savedUsers[i].city = values.city
+                savedUsers[i].country = values.country
+                savedUsers[i].phoneNumber = values.phoneNumber
+                savedUsers[i].email = values.email
+                savedUsers[i].website = values.website
+
+                    localStorage.setItem('Users', JSON.stringify(savedUsers))
+                    let storageProfileString1 = localStorage.getItem('Users')
+                    let savedUsers1 = JSON.parse(storageProfileString1);
+    
+                    console.log("1: ", savedUsers1)
+                   
+                  
+                     window.location.reload()
+
+               }
+            } 
+        
+    }
+   
 
     return(
        <div> 
@@ -38,45 +76,51 @@ function Item({save}) {
                lastName: OneUsersClickShow.lastName,
                city: OneUsersClickShow.city,
                country: OneUsersClickShow.country,
-               phoneName:  OneUsersClickShow.phoneNumber,
+               phoneNumber:  OneUsersClickShow.phoneNumber,
                email: OneUsersClickShow.email,
-               webSite: OneUsersClickShow.website
+               website: OneUsersClickShow.website
            }} 
         
-           validateOnBlur
-           onSubmit ={(values)=> {
-            let storageProfileString = window.localStorage.getItem('Users')
-            let savedUsers = JSON.parse(storageProfileString);
+           validateOnBlur 
+           onSubmit ={ sumbit}
+        //        (values)=> {
+         
+        //        setTimeout(() => {
+              
+        //     let storageProfileString = localStorage.getItem('Users')
+        //     let savedUsers = JSON.parse(storageProfileString);
 
-            for(let i=0; i < savedUsers.length; i++) {
-               if(savedUsers[i].id == OneUsersClickShow.id){
-                savedUsers[i].firstName = values.firstName
-                savedUsers[i].lastName = values.lastName
-                savedUsers[i].city = values.city
-                savedUsers[i].country = values.country
-                savedUsers[i].phoneName = values.phoneName
-                savedUsers[i].email = values.email
-                savedUsers[i].webSite = values.webSite
-                window.localStorage.setItem('Users', JSON.stringify(savedUsers))
-                 
-                   
-                   console.log( savedUsers[i] )
-                
-                
-               }
-                
-        
-            } 
+        //     for(let i=0; i < savedUsers.length; i++) {
+        //        if(savedUsers[i].id == OneUsersClickShow.id){
+        //         savedUsers[i].firstName = values.firstName
+        //         savedUsers[i].lastName = values.lastName
+        //         savedUsers[i].city = values.city
+        //         savedUsers[i].country = values.country
+        //         savedUsers[i].phoneName = values.phoneName
+        //         savedUsers[i].email = values.email
+        //         savedUsers[i].webSite = values.webSite
+
+        //             localStorage.setItem('Users', JSON.stringify(savedUsers))
+        //             let storageProfileString1 = localStorage.getItem('Users')
+        //             let savedUsers1 = JSON.parse(storageProfileString1);
+    
+        //             console.log("1: ", savedUsers1)
+        //             return savedUsers1
+        //        }
+        //     } 
+        // }, 1000) 
        
-               console.log("Значение: ", values)
+        //        console.log("Значение: ", values)
             
-            } } 
+        //     }
+        //  } 
            validationSchema = {validationsSchema}
            >
                { ({values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty }) =>(
-
+                   
                    
                    <div className ='poliInput' > 
+                       
                       <p className = {`wrapper`}>
                            <label htmlFor ={`firstName`} className ={'title  '} >First Name: </label><br />
                            <input className ={`input`} 
@@ -131,15 +175,15 @@ function Item({save}) {
 
                        
                        <p  className = {`wrapper`}>
-                           <label htmlFor ={`phoneName`}   className ={'title'}>Phone Number: </label><br />
+                           <label htmlFor ={`phoneNumber`}   className ={'title'}>Phone Number: </label><br />
                            <input className ={`input`}
                            type ={`text`}
-                           name ={`phoneName`}
+                           name ={`phoneNumber`}
                            onChange ={handleChange}
                            onBlur={handleBlur}  
-                           value={values.phoneName} />
+                           value={values.phoneNumber} />
                       
-                       {touched.phoneName && errors.phoneName && <p className ={'error'}>{errors.phoneName}</p>  }
+                       {touched.phoneNumber && errors.phoneNumber && <p className ={'error'}>{errors.phoneNumber}</p>  }
                        </p>
 
                        <p  className = {`wrapper`}>
@@ -157,35 +201,41 @@ function Item({save}) {
 
 
                        <p  className = {`wrapper`}>
-                           <label htmlFor ={`webSite`} className ={'title'} >WebSite: </label><br />
+                           <label htmlFor ={`website`} className ={'title'} >WebSite: </label><br />
                            <input className ={`input`}
                            type ={`text`}
-                           name ={`webSite`}
+                           name ={`website`}
                            onChange ={handleChange}
                            onBlur={handleBlur}  
-                           value={values.webSite} />
+                           value={values.website} />
                     
-                       {touched.webSite && errors.webSite && <p className ={'error'}>{errors.webSite}</p>  }
+                       {touched.website && errors.website && <p className ={'error'}>{errors.website}</p>  }
                         </p>
 
+                
 
-                     <button 
+                     <Link to ='/'>  <button 
                        className ={`BtnFormik wrapper`}
                          disabled ={!isValid && !dirty}
-                        onClick ={  handleSubmit}
-                         type ={`submit`}>Save Contact</button>
-                          
-
-                       
-                    </div>      
+                    
+                         onClick={() => handleSubmit ()} 
+                        
+                         type ={`submit`} 
+                        
+                         > Save Contact </button></Link>
+                        
+                    </div>  
+                   
                ) }</Formik>
-
-
         </div>
-
+    
+       <Link to = '/' ><button>fnn</button></Link>
         </div>
     )
     
 }
 
+
 export default Item
+
+// export default Item

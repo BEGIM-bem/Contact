@@ -1,6 +1,16 @@
+
 let storageProfileString = localStorage.getItem('Users')
 let savedUsers = JSON.parse(storageProfileString);
+
+
 console.log("ss: ", savedUsers)
+
+export const Stata = (savedUsers2) =>{
+    console.log("save: ", savedUsers2)
+    return{
+    type: 'stata',
+    stata: savedUsers2 }
+}
 
 
 export const sortAZ =  (value) => {
@@ -48,10 +58,11 @@ export const Item = (userOne ) =>{
     }
 }
 
-export const save = (save) =>{
 
-    return{
-        type: 'save',
-        save: save
-    }
-}
+// export const Like = (values) =>{
+//     return{
+//         type: 'Like',
+//         Like :console.log("hello", values)
+//     }
+
+// }

@@ -1,22 +1,56 @@
-import React, {useState} from 'react'
+import React, {useState, useRef} from 'react'
 import {connect } from 'react-redux'
 import * as actions from './actions'
-import {Link } from "react-router-dom"
+import {Link, useLinkClickHandler } from "react-router-dom"
 
 import './List.css'
 import Heart from './img/Vector.png'
 import SortAZ from './img/sort.png'
 import SortZA from './img/sort (1).png'
-
+import favIcon from './img/fav.svg'
 import  Location  from './img/Group.png'
 import Phone from './img/Group (1).png'
 import Internet from './img/internet.png'
 import Email from './img/email.png'
 import Hart from './img/hord.png'
+import { useSelector } from 'react-redux'
 // import Item from '../Item/Item'
 
 function Counter ({ counter, findUsers, sortZA, sortAZ, Item}){
+   
+    console.log("counter: ", counter)
+    const OneUsersClickShow  = useSelector(state => state)
+    console.log("UseSelector: ", OneUsersClickShow)
+    
+    const[toggle, setToggle] = useState(false)
+   
 
+    let k = []
+    function setFavorites (item) {
+    
+
+        alert("want to add this to your favorites" )
+       
+       let json= JSON.parse(localStorage.getItem('favorites'))
+       console.log("json: ", json.length)
+               
+                // for(let i =0; i<k.length; i++){
+                //     if(k[i].id !== item.id){
+                        k.push(item) 
+                //     } 
+                      
+                // }
+             
+                console.log( "Lod: ", k)
+                localStorage.setItem('favorites', JSON.stringify(k));
+            
+
+    
+ 
+    }
+
+      
+      
 
  
     return(
@@ -50,7 +84,7 @@ function Counter ({ counter, findUsers, sortZA, sortAZ, Item}){
 
              <div className="title">
                 <p className="NameUsers"> {item.firstName} {item.lastName}  </p>
-                <img className="IconHart" src = {Hart} alt ='not find picture hart' />
+                <button className= {toggle? "red_heart": "white_heart"  } onClick={() => setFavorites(item) } >  <img className="IconHart"  src = {Hart} alt ='not find picture hart'  /> </button>
                </div>
 
 

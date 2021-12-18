@@ -1,9 +1,16 @@
 
- 
-    let storageProfileString = window.localStorage.getItem('Users')
+
+
+    let storageProfileString = localStorage.getItem('Users')
     let savedUsers = JSON.parse(storageProfileString);
+    console.log("Local Stage: ", savedUsers)    
+    // const unsubscribe = store.subscribe(savedUsers)
+        // let r = unsubscribe() 
   
 
+    // const store = createStore(savedUsers);
+    // const unsubscribe = store.subscribe(() => console.log("updated state", store.getState()))
+    // unsubscribe();
 
 const reduser =(stata = savedUsers, actions) => {
     switch(actions.type){
@@ -17,7 +24,11 @@ const reduser =(stata = savedUsers, actions) => {
         case 'findUsers':
             return actions.findUsers
             case 'Item':
-                return actions.Item        
+                return actions.Item
+         case 'stata':
+             return actions.stata      
+             
+             
         
             default:
                 return stata

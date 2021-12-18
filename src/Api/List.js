@@ -4,12 +4,6 @@
 // import SortAZ from './img/sort.png'
 // import SortZA from './img/sort (1).png'
 import axios from 'axios'
-// import  Location  from './img/Group.png'
-// import Phone from './img/Group (1).png'
-// import Internet from './img/internet.png'
-// import Email from './img/email.png'
-// import Hart from './img/hord.png'
-// import {Routes, Route, Link } from "react-router-dom"
 
 
  function List() {
