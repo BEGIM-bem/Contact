@@ -7,14 +7,14 @@ import './List.css'
 import Heart from './img/Vector.png'
 import SortAZ from './img/sort.png'
 import SortZA from './img/sort (1).png'
-import favIcon from './img/fav.svg'
+
 import  Location  from './img/Group.png'
 import Phone from './img/Group (1).png'
 import Internet from './img/internet.png'
 import Email from './img/email.png'
 import Hart from './img/hord.png'
 import { useSelector } from 'react-redux'
-// import Item from '../Item/Item'
+
 
 function Counter ({ counter, findUsers, sortZA, sortAZ, Item, HeartFovoriti}){
    

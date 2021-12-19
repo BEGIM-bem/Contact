@@ -6,13 +6,13 @@ let storageProfileString = localStorage.getItem('Users')
 let savedUsers = JSON.parse(storageProfileString);
 
 
-console.log("ss: ", savedUsers)
 
-export const Stata = (savedUsers2) =>{
-    console.log("save: ", savedUsers2)
+
+export const Stata = (savedUsers) =>{
+    console.log("save: ", savedUsers)
     return{
     type: 'stata',
-    stata: savedUsers2 }
+    stata: savedUsers }
 }
 
 
@@ -68,11 +68,31 @@ let storagefavorites = localStorage.getItem('favorites')
 let favorites = JSON.parse(storagefavorites);
 
 export const HeartFovoriti =() =>{
-    
+   if(!favorites){
+       
+    favorites = [{city: "London",
+       country: "England",
+       email: "eng.eugine@gomail.com",
+       firstName: "Eugene",
+       id: 4,
+       image: "https://images.unsplash.com/photo-1565260524775-7e9b536fba2f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+       lastName: "Forige",
+       phoneNumber: "+932550221",
+       website: "eugine.com"}]
+    localStorage.setItem("favorites", JSON.stringify(favorites)) ;
 
+   }else{
+    let storagefavorites = localStorage.getItem('favorites')
+     favorites = JSON.parse(storagefavorites);
+
+   }
+  
+
+ 
     return{
         type:'Heart',
         HeartFovoriti: favorites  
     }
+
 }
 
