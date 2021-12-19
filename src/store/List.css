@@ -2,6 +2,11 @@
   position: relative;
 }
 
+.Hearte {
+  background: 0;
+  border: 0;
+}
+
 .btnHart {
   border: 0;
 }
@@ -20,6 +25,12 @@
   font-weight: normal;
   font-size: 15px;
   line-height: 18px;
+}
+.red_heart {
+  color: red;
+}
+.white_heart {
+  color: black;
 }
 
 .IconHart1 {

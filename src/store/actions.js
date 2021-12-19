@@ -1,3 +1,6 @@
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux'
+
 
 let storageProfileString = localStorage.getItem('Users')
 let savedUsers = JSON.parse(storageProfileString);
@@ -42,7 +45,10 @@ return{
     findUsers: savedUsers.filter(item => {
         let fullName = item.firstName + ' ' + item.lastName;
      
-        return fullName.toLowerCase().includes(value.toLowerCase())
+       
+            return fullName.toLowerCase().includes(value.toLowerCase())
+     
+       
     })
     
 }
@@ -58,11 +64,15 @@ export const Item = (userOne ) =>{
     }
 }
 
+let storagefavorites = localStorage.getItem('favorites')
+let favorites = JSON.parse(storagefavorites);
 
-// export const Like = (values) =>{
-//     return{
-//         type: 'Like',
-//         Like :console.log("hello", values)
-//     }
+export const HeartFovoriti =() =>{
+    
 
-// }
+    return{
+        type:'Heart',
+        HeartFovoriti: favorites  
+    }
+}
+

@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {Formik} from 'formik'
 import * as yup from 'yup'
 import './Item.css'
 import Avatorka from './img/avatar.png'
 import { useSelector } from 'react-redux'
 import {Link , useNavigate } from "react-router-dom"
+import BigHart from './img/Vector (1)Hart.png'
+import {FaHeart } from 'react-icons/fa'
 
 import{Stata} from '../store/actions'
 
@@ -14,9 +16,10 @@ import{Stata} from '../store/actions'
 
 
 function Item( ) {
+    const [toggle, setToggle] =useState(false)
     const OneUsersClickShow  = useSelector(state => state)
-    console.log("OneUsersClickShow ", OneUsersClickShow);
-   
+
+
 
   
     const validationsSchema = yup.object().shape({
@@ -32,6 +35,7 @@ function Item( ) {
    
     function sumbit(values) {
         
+
               
             let storageProfileString = localStorage.getItem('Users')
             let savedUsers = JSON.parse(storageProfileString);
@@ -52,7 +56,7 @@ function Item( ) {
                     let storageProfileString1 = localStorage.getItem('Users')
                     let savedUsers1 = JSON.parse(storageProfileString1);
     
-                    console.log("1: ", savedUsers1)
+                 
                    
                   
                      window.location.reload()
@@ -62,10 +66,23 @@ function Item( ) {
         
     }
    
+    let array =[]
+    function BigHart() {
+          setToggle(!toggle)
+     
+            
+            
+    }
+   
 
     return(
        <div> 
-           <img src ={Avatorka} alt={"not find"} className ='Avatorka' />
+           
+          <p><img src ={Avatorka} alt={"not find"} className ='Avatorka' /></p> 
+           <FaHeart className='FaHeart' onClick={() => BigHart()}
+                                          className ={toggle ? 'FaHeart_Red':'FaHeart' }
+                   />
+         
 
         <div className ="formik">
            <Formik 
@@ -83,37 +100,8 @@ function Item( ) {
         
            validateOnBlur 
            onSubmit ={ sumbit}
-        //        (values)=> {
-         
-        //        setTimeout(() => {
-              
-        //     let storageProfileString = localStorage.getItem('Users')
-        //     let savedUsers = JSON.parse(storageProfileString);
-
-        //     for(let i=0; i < savedUsers.length; i++) {
-        //        if(savedUsers[i].id == OneUsersClickShow.id){
-        //         savedUsers[i].firstName = values.firstName
-        //         savedUsers[i].lastName = values.lastName
-        //         savedUsers[i].city = values.city
-        //         savedUsers[i].country = values.country
-        //         savedUsers[i].phoneName = values.phoneName
-        //         savedUsers[i].email = values.email
-        //         savedUsers[i].webSite = values.webSite
-
-        //             localStorage.setItem('Users', JSON.stringify(savedUsers))
-        //             let storageProfileString1 = localStorage.getItem('Users')
-        //             let savedUsers1 = JSON.parse(storageProfileString1);
-    
-        //             console.log("1: ", savedUsers1)
-        //             return savedUsers1
-        //        }
-        //     } 
-        // }, 1000) 
-       
-        //        console.log("Значение: ", values)
-            
-        //     }
-        //  } 
+        
+        
            validationSchema = {validationsSchema}
            >
                { ({values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty }) =>(

@@ -1,7 +1,7 @@
 import React, {useState, useRef} from 'react'
 import {connect } from 'react-redux'
 import * as actions from './actions'
-import {Link, useLinkClickHandler } from "react-router-dom"
+import {Link } from "react-router-dom"
 
 import './List.css'
 import Heart from './img/Vector.png'
@@ -16,37 +16,41 @@ import Hart from './img/hord.png'
 import { useSelector } from 'react-redux'
 // import Item from '../Item/Item'
 
-function Counter ({ counter, findUsers, sortZA, sortAZ, Item}){
+function Counter ({ counter, findUsers, sortZA, sortAZ, Item, HeartFovoriti}){
    
     console.log("counter: ", counter)
     const OneUsersClickShow  = useSelector(state => state)
     console.log("UseSelector: ", OneUsersClickShow)
     
-    const[toggle, setToggle] = useState(false)
-   
 
-    let k = []
+    let array = []
     function setFavorites (item) {
-    
-
-        alert("want to add this to your favorites" )
+      
+    alert(" Хотите добавить в избранные этого человека? " )
        
-       let json= JSON.parse(localStorage.getItem('favorites'))
-       console.log("json: ", json.length)
+    if(array.length){
+       for(let i=0; i < array.length; i++ ){
+    
+           if(array[i].id == item.id){
+               alert("Этот контакт уже в избранных)")
+               return
                
-                // for(let i =0; i<k.length; i++){
-                //     if(k[i].id !== item.id){
-                        k.push(item) 
-                //     } 
-                      
-                // }
-             
-                console.log( "Lod: ", k)
-                localStorage.setItem('favorites', JSON.stringify(k));
+           }
+        }
+           
+        array.push(item) 
+            localStorage.setItem('favorites', JSON.stringify(array));
+            alert("Успешно добавлено!")
+        
+    }
+        else{
+            array.push(item) 
+            localStorage.setItem('favorites', JSON.stringify(array));
+            alert("Успешно добавлено!")
+            
             
 
-    
- 
+        }
     }
 
       
@@ -67,7 +71,7 @@ function Counter ({ counter, findUsers, sortZA, sortAZ, Item}){
             <div className = 'AllIcon'> 
 
 
-            <img src ={Heart} alt ='not find icon'  className ='IconHeart'  />
+            <button onClick={() => HeartFovoriti() } className ='Hearte'  ><img src ={Heart} alt ='not find icon'  className ='IconHeart'  /> </button>
             <button className="Sort1" onClick={() =>  sortAZ() }  id = 'sortAZ' > <img src ={SortAZ}  alt ='not find icon' className = "SortAZ"  /></button> 
             <button className ="Sort1" onClick = {() => sortZA() } id ='sortZA' ><img src ={SortZA} alt ='not find icon' className ='SortZA' /> </button> 
             </div>
@@ -84,7 +88,8 @@ function Counter ({ counter, findUsers, sortZA, sortAZ, Item}){
 
              <div className="title">
                 <p className="NameUsers"> {item.firstName} {item.lastName}  </p>
-                <button className= {toggle? "red_heart": "white_heart"  } onClick={() => setFavorites(item) } >  <img className="IconHart"  src = {Hart} alt ='not find picture hart'  /> </button>
+                <button className= 'btnHart' onClick={() => setFavorites(item) } >  <img     src = {Hart} alt ='not find picture hart'  /> </button>
+                
                </div>
 
 
