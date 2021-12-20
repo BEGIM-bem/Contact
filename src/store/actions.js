@@ -9,14 +9,14 @@ let savedUsers = JSON.parse(storageProfileString);
 
 
 export const Stata = (savedUsers) =>{
-    console.log("save: ", savedUsers)
+    
     return{
     type: 'stata',
     stata: savedUsers }
 }
 
 
-export const sortAZ =  (value) => {
+export const sortAZ =  () => {
 
 
 return {
@@ -25,7 +25,7 @@ return {
 }
 }
 
-export const sortZA = (value) =>{
+export const sortZA = () =>{
     
 return{
     type: 'sortZA',
